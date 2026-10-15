@@ -1,7 +1,13 @@
 #include <iostream>
 #include <Windows.h>
 
-
+void Fillarray(int *arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		*(arr + i) = rand() % 10;
+	}
+}
 
 int main()
 {
@@ -9,269 +15,31 @@ int main()
 	SetConsoleOutputCP(CP_UTF8); //1251
 	srand(time(NULL));
 
-	int choose = 0, money = 0, sum = 0, kol = 0;
-	double app = 70, ora = 60, abr = 50, gru = 75;
-	double tom = 40, oni = 30, cuc = 25;
-	double gar = 40, pet = 30;
+	/*	const int size = 5;
+	int arr[size]{ 3, 1, 2, 5, 6 };
+
+	Fillarray(size);
+
+	std::cout << arr << "\n";
+	std::cout << *arr << "\n";
+	std::cout << arr + 1 << "\n";
+	std::cout << *(arr + 1) << "\n";\
+
+	std::cout << arr + 5 << "\n";
+	*(arr + 5) = 100;
+	std::cout << *(arr + 5) << "\n";*/
+
+	int a = 5;
 	
-	while (true)
-	{
-		system("cls");
-		std::cout << "\n\n\n\t\t Магазин \"Соки Севы\" \n\n\n";
-		std::cout << "1 - Войти в магазин\n";
-		std::cout << "2 - Пройти на кассу\n";
-		std::cout << "0 - Выход\n\n";
-		std::cout << "Ввод: ";
-		std::cin >> choose;
+	int* car = new int;
 
-		if (choose == 1)
-		{
-			while (true)
-			{
-				system("cls");
-				std::cout << "\n\n\n\t\t\"Выберите категорию\" \n\n\n";
-				std::cout << "1 - Фруктовые \n";
-				std::cout << "2 - Овощные\n";
-				std::cout << "3 - Чаи\n\n";
-				std::cout << "0 - Выход на кассу\n\n";
-				
-				std::cout << "Сумма: " << sum << "\n";
-				std::cout << "Ввод: ";
-				std::cin >> choose;
-				
-				while (true)
-				{
+	int *farit = Lol();
+	delete farit;
+	delete car;
+	farit = nullptr;
+	car = nullptr;
 
-				
-					if (choose == 1)
-					{
-
-						system("cls");
-						std::cout << "\n\n\n\t\t\"Выбрана категория: Фруктовые\" \n\n\n";
-						std::cout << "\n\n\n\t\t\"Выберите вкус (Цена - литр)\" \n\n\n";
-						std::cout << "Любая цифра кроме предоставленых - выход в категории\n";
-						std::cout << "1 - Яблочный " << app << "р\n";
-						std::cout << "2 - Апельсиновый " << ora << "р\n";
-						std::cout << "3 - Абрикосовый " << abr << "р\n";
-						std::cout << "4 - Грушевый " << gru << "р\n";
-						std::cout << "0 - Выход на кассу\n";
-						std::cout << "Ввод: ";
-						std::cin >> choose;
-						
-					
-					}
-					else
-					{
-						break;
-						Sleep(500);
-					}
-					if (choose == 1)
-					{
-						std::cout << "\nВыбрано: 1 - Яблочный\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (app * kol);
-						break;
-					}
-					else if (choose == 2)
-					{
-						std::cout << "\nВыбрано: 2 - Апельсиновый\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (ora * kol);
-						break;
-					}
-					else if (choose == 3)
-					{
-						std::cout << "\nВыбрано: 3 - Абрикосовый\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (abr * kol);
-						break;
-					}
-					else if (choose == 4)
-					{
-						std::cout << "\nВыбрано: 4 - Грушевый\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (gru * kol);
-						break;
-					}
-					else 
-					{
-						break;
-					}
-				}
-
-
-
-
-
-				while (true)
-				{
-					if (choose == 2)
-					{
-						system("cls");
-						std::cout << "\n\n\n\t\t\"Выбрана категория: Овощные\" \n\n\n";
-						std::cout << "\n\n\n\t\t\"Выберите вкус (Цена - литр)\" \n\n\n";
-						std::cout << "Любая цифра кроме предоставленых - выход в категории\n";
-						std::cout << "1 - Томатный " << tom << "р\n";
-						std::cout << "2 - Луковый " << oni << "р\n";
-						std::cout << "3 - Огуречный " << cuc << "р\n";
-						std::cout << "0 - Выход на кассу\n";
-						std::cout << "Сумма: " << sum << "\n";
-						std::cout << "Ввод: ";
-						std::cin >> choose;
-					}
-					else
-					{
-						break;
-					}
-					if (choose == 1)
-					{
-						std::cout << "\nВыбрано: 1 - Томатный\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (tom * kol);
-						break;
-					}
-					else if (choose == 2)
-					{
-						std::cout << "\nВыбрано: 2 - Луковый\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (oni * kol);
-						break;
-					}
-					else if (choose == 3)
-					{
-						std::cout << "\nВыбрано: 3 - Огуречный\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (cuc * kol);
-						break;
-					}
-					else
-					{
-						break;
-					}
-				}
-
-
-
-
-
-				while (true)
-				{
-
-
-					if (choose == 3)
-					{
-						system("cls");
-						std::cout << "\n\n\n\t\t\"Выбрана категория: Чаи\" \n\n\n";
-						std::cout << "\n\n\n\t\t\"Выберите вкус (Цена - литр)\" \n\n\n";
-						std::cout << "Любая цифра кроме предоставленых - выход в категории\n";
-						std::cout << "1 - Чесночный " << gar << "р\n";
-						std::cout << "2 - Петруший " << pet << "р\n";
-						std::cout << "0 - Выход\n";
-						std::cout << "Сумма: " << sum << "\n";
-						std::cout << "Ввод: ";
-						std::cin >> choose;
-					}
-					else
-					{
-						break;
-						Sleep(500);
-					}
-					if (choose == 1)
-					{	
-						std::cout << "\nВыбрано: 1 - Чесночный\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (gar * kol);
-						break;
-					}
-					else if (choose == 2)
-					{
-						std::cout << "\nВыбрано: 2 - Петруший\n";
-						std::cout << "Выберите кол-во: ";
-						std::cin >> kol;
-						sum = sum + (pet * kol);
-						break;
-					}
-					else
-					{
-						break;
-					}
-				}
-
-
-				if (choose == 0)
-				{
-						
-					break;
-				}
-					
-				
-			}
-		}
-		else if (choose == 2)
-		{
-			system("cls");
-			std::cout << "\t\t Оплатите товары: \n";
-			std::cout << "1 - Наличные\n";
-			std::cout << "2 - Карта\n";
-			std::cin >> choose;
-
-			if (choose == 1)
-			{
-				std::cout << "Введите сумму\n" << sum;
-				std::cout << " Ввод: ";
-				std::cin >> money;
-				if (money == sum)
-				{
-					std::cout << "Спасибо за покупку!";
-					break;
-				}
-				else
-				{
-					std::cout << "Некоректный ввод!";
-					break;
-				}
-			}
-			else if(choose == 2)
-			{
-				std::cout << "Введите сумму\n" << sum;
-				std::cout << "Ввод: ";
-				std::cin >> money;
-				if (money == sum)
-				{
-					std::cout << "Спасибо за покупку!";
-					break;
-				}
-				else
-				{
-					std::cout << "Некоректный ввод!";
-					break;
-				}
-			}
-			else
-			{
-				std::cout << "Ошибка!";
-			}
-		}
-		else if (choose == 0)
-		{
-			system("cls");
-			break;
-		}
-		else
-		{
-			std::cout << "\nНекорректный ввод\n";
-			Sleep(1500);
-		}
-
-	}
+	car = &a;
 
 	return 0;
 }
@@ -908,7 +676,309 @@ int usf(int num, int num1)
 		num -= 1;
 	}*/
 
+/*int choose = 0, money = 0, sum = 0, kol = 0;
+	double app = 70, ora = 60, abr = 50, gru = 75;
+	double tom = 40, oni = 30, cuc = 25;
+	double gar = 40, pet = 30;
+	
+	while (true)
+	{
+		system("cls");
+		std::cout << "\n\n\n\t\t Магазин \"Соки Севы\" \n\n\n";
+		std::cout << "1 - Войти в магазин\n";
+		std::cout << "2 - Пройти на кассу\n";
+		std::cout << "0 - Выход\n\n";
+		std::cout << "Ввод: ";
+		std::cin >> choose;
+
+		if (choose == 1)
+		{
+			while (true)
+			{
+				system("cls");
+				std::cout << "\n\n\n\t\t\"Выберите категорию\" \n\n\n";
+				std::cout << "1 - Фруктовые \n";
+				std::cout << "2 - Овощные\n";
+				std::cout << "3 - Чаи\n\n";
+				std::cout << "0 - Выход на кассу\n\n";
+				
+				std::cout << "Сумма: " << sum << "\n";
+				std::cout << "Ввод: ";
+				std::cin >> choose;
+				
+				while (true)
+				{
+
+				
+					if (choose == 1)
+					{
+
+						system("cls");
+						std::cout << "\n\n\n\t\t\"Выбрана категория: Фруктовые\" \n\n\n";
+						std::cout << "\n\n\n\t\t\"Выберите вкус (Цена - литр)\" \n\n\n";
+						std::cout << "Любая цифра кроме предоставленых - выход в категории\n";
+						std::cout << "1 - Яблочный " << app << "р\n";
+						std::cout << "2 - Апельсиновый " << ora << "р\n";
+						std::cout << "3 - Абрикосовый " << abr << "р\n";
+						std::cout << "4 - Грушевый " << gru << "р\n";
+						std::cout << "0 - Выход на кассу\n";
+						std::cout << "Ввод: ";
+						std::cin >> choose;
+						
+					
+					}
+					else
+					{
+						break;
+						Sleep(500);
+					}
+					if (choose == 1)
+					{
+						std::cout << "\nВыбрано: 1 - Яблочный\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (app * kol);
+						break;
+					}
+					else if (choose == 2)
+					{
+						std::cout << "\nВыбрано: 2 - Апельсиновый\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (ora * kol);
+						break;
+					}
+					else if (choose == 3)
+					{
+						std::cout << "\nВыбрано: 3 - Абрикосовый\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (abr * kol);
+						break;
+					}
+					else if (choose == 4)
+					{
+						std::cout << "\nВыбрано: 4 - Грушевый\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (gru * kol);
+						break;
+					}
+					else 
+					{
+						break;
+					}
+				}
 
 
+
+
+
+				while (true)
+				{
+					if (choose == 2)
+					{
+						system("cls");
+						std::cout << "\n\n\n\t\t\"Выбрана категория: Овощные\" \n\n\n";
+						std::cout << "\n\n\n\t\t\"Выберите вкус (Цена - литр)\" \n\n\n";
+						std::cout << "Любая цифра кроме предоставленых - выход в категории\n";
+						std::cout << "1 - Томатный " << tom << "р\n";
+						std::cout << "2 - Луковый " << oni << "р\n";
+						std::cout << "3 - Огуречный " << cuc << "р\n";
+						std::cout << "0 - Выход на кассу\n";
+						std::cout << "Сумма: " << sum << "\n";
+						std::cout << "Ввод: ";
+						std::cin >> choose;
+					}
+					else
+					{
+						break;
+					}
+					if (choose == 1)
+					{
+						std::cout << "\nВыбрано: 1 - Томатный\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (tom * kol);
+						break;
+					}
+					else if (choose == 2)
+					{
+						std::cout << "\nВыбрано: 2 - Луковый\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (oni * kol);
+						break;
+					}
+					else if (choose == 3)
+					{
+						std::cout << "\nВыбрано: 3 - Огуречный\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (cuc * kol);
+						break;
+					}
+					else
+					{
+						break;
+					}
+				}
+
+
+
+
+
+				while (true)
+				{
+
+
+					if (choose == 3)
+					{
+						system("cls");
+						std::cout << "\n\n\n\t\t\"Выбрана категория: Чаи\" \n\n\n";
+						std::cout << "\n\n\n\t\t\"Выберите вкус (Цена - литр)\" \n\n\n";
+						std::cout << "Любая цифра кроме предоставленых - выход в категории\n";
+						std::cout << "1 - Чесночный " << gar << "р\n";
+						std::cout << "2 - Петруший " << pet << "р\n";
+						std::cout << "0 - Выход\n";
+						std::cout << "Сумма: " << sum << "\n";
+						std::cout << "Ввод: ";
+						std::cin >> choose;
+					}
+					else
+					{
+						break;
+						Sleep(500);
+					}
+					if (choose == 1)
+					{	
+						std::cout << "\nВыбрано: 1 - Чесночный\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (gar * kol);
+						break;
+					}
+					else if (choose == 2)
+					{
+						std::cout << "\nВыбрано: 2 - Петруший\n";
+						std::cout << "Выберите кол-во: ";
+						std::cin >> kol;
+						sum = sum + (pet * kol);
+						break;
+					}
+					else
+					{
+						break;
+					}
+				}
+
+
+				if (choose == 0)
+				{
+						
+					break;
+				}
+					
+				
+			}
+		}
+		else if (choose == 2)
+		{
+			system("cls");
+			std::cout << "\t\t Оплатите товары: \n";
+			std::cout << "1 - Наличные\n";
+			std::cout << "2 - Карта\n";
+			std::cin >> choose;
+
+			if (choose == 1)
+			{
+				std::cout << "Введите сумму\n" << sum;
+				std::cout << " Ввод: ";
+				std::cin >> money;
+				if (money == sum)
+				{
+					std::cout << "Спасибо за покупку!";
+					break;
+				}
+				else
+				{
+					std::cout << "Некоректный ввод!";
+					break;
+				}
+			}
+			else if(choose == 2)
+			{
+				std::cout << "Введите сумму\n" << sum;
+				std::cout << "Ввод: ";
+				std::cin >> money;
+				if (money == sum)
+				{
+					std::cout << "Спасибо за покупку!";
+					break;
+				}
+				else
+				{
+					std::cout << "Некоректный ввод!";
+					break;
+				}
+			}
+			else
+			{
+				std::cout << "Ошибка!";
+			}
+		}
+		else if (choose == 0)
+		{
+			system("cls");
+			break;
+		}
+		else
+		{
+			std::cout << "\nНекорректный ввод\n";
+			Sleep(1500);
+		}
+
+	}*/
+
+/*	int a = 5;
+	Plus(&a);
+
+	int b = a;
+
+	int* ptr = &a;
+	ptr = &a;
+
+	std::cout << a << "\n";
+	std::cout << &a << "\n";
+	std::cout << ptr << "\n";
+	std::cout << *ptr << "\n";
+	std::cout << &ptr << "\n";
+*/
+
+/*void MySwap(int *num, int* num1)
+{
+	int num2 = *num;
+	*num = *num1;
+	*num1 = num2;
+}
+
+void MySwap(int &num, int &num1)
+{
+	int num2 = num;
+	num = num1;
+	num1 = num2;
+}
+
+void MySwap(int num, int num1)
+{
+	int num2 = num;
+	num = num1;
+	num1 = num2;
+}
+	int one = 10, two = 25;
+	
+	std::cout << one << " " << two << "\n";
+	MySwap(&one, &two);
+	std::cout << one << " " << two << "\n";*/
 
 
