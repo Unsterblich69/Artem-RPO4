@@ -1,12 +1,24 @@
 #include <iostream>
 #include <Windows.h>
 
-void Fillarray(int *arr, int size)
+
+
+void SetMemory(int*& pahom, int size)
 {
-	for (int i = 0; i < size; i++)
+	if (pahom != nullptr)
 	{
-		*(arr + i) = rand() % 10;
+		delete[] pahom;
 	}
+	pahom = new int[size];
+}
+void DeleteArray(int*& pahom)
+{
+	if (pahom == nullptr)
+	{
+		return;
+	}
+	delete[] pahom;
+	pahom = nullptr;
 }
 
 int main()
@@ -15,31 +27,119 @@ int main()
 	SetConsoleOutputCP(CP_UTF8); //1251
 	srand(time(NULL));
 
-	/*	const int size = 5;
-	int arr[size]{ 3, 1, 2, 5, 6 };
+	/*	int* arr = nullptr;
 
-	Fillarray(size);
+	arr = new int[5];
+	//*(arr + 1) = 10;
 
-	std::cout << arr << "\n";
-	std::cout << *arr << "\n";
-	std::cout << arr + 1 << "\n";
-	std::cout << *(arr + 1) << "\n";\
+	arr[0] = 10;
 
-	std::cout << arr + 5 << "\n";
-	*(arr + 5) = 100;
-	std::cout << *(arr + 5) << "\n";*/
+	delete[] arr;
 
-	int a = 5;
+	arr = nullptr;*/
+
+	/*int row = 3, col = 4;
+
+
+	int** name = new int* [row];
+	for (int i = 0; i < row; i++)
+	{
+		delete[] name[i];
+	}
+	delete[] name;
+	name = nullptr;
 	
-	int* car = new int;
+	name[1][2] = 100;
+	*/
+	
+	/*int side = 2, row = 4, col1 = 4, col2 = 3;
 
-	int *farit = Lol();
-	delete farit;
-	delete car;
-	farit = nullptr;
-	car = nullptr;
+	int*** seva = new int**[side];
 
-	car = &a;
+	for (int i = 0; i < side; i++)
+	{
+		seva[i] = new int* [row];
+	}
+
+	for (int i = 0; i < row; i++)
+	{
+		seva[0][i] = new int[col1];
+	}
+
+	seva[1][0] = new int[2];
+	for (int i = 1; i < row; i++)
+	{
+		seva[1][i] = new int[col2];
+	}
+	*/
+
+	/*void PushArray(int *&arr, int &size)
+{
+	int* temp = new int[size];
+	
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+
+	delete[] arr;
+
+	size++;
+	arr = new int[size];
+
+	for (int i = 0; i < size - 1; i++)
+	{
+		arr[i] = temp[i];
+	}
+	delete[] temp;
+
+	arr[size - 1] = 100;
+}
+
+void PushArray2(int*& arr, int& size)
+{
+	size++;
+
+	int* temp = new int[size];
+
+	for (int i = 0; i < size - 1; i++)
+	{
+		temp[i] = arr[i];
+	}
+
+	arr[size - 1] = 100;
+
+	std::swap(arr, temp);
+
+	delete[] temp;
+
+	
+}
+	
+	int size = 5;
+
+	int* arr = new int[size] {5, 3, 8, 1, 9};
+	
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n\n";
+
+	PushArray(arr, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+
+
+	delete[]arr*/;
+
+
+
+
+
 
 	return 0;
 }
@@ -83,6 +183,7 @@ int main()
 		std::cout << "Ошибка";
 	}
 */
+
 /*
 	double a = 4.3;
 	float b = 4.3f;
@@ -109,6 +210,7 @@ int main()
 	
 	std::cout << a << " " << b;
 	*/
+
 /*  std::cout << "\tHello \\ World \"text\" 10 + 5 " << 10 + 5 << std::endl;
 	std::cout << "Text\n\n\n\n\n\n";
 
@@ -118,6 +220,7 @@ int main()
 	std::cout << "\t" << 20 << "$$$" << std::endl;
 	std::cout << "Почемукта";
 */
+
 /*
 	
 	Типы данных:
@@ -146,6 +249,7 @@ int main()
 	ТАБУ:	goto		and or not		int имяПеременной
 
 */
+
 /*double a = 0, b = 0, c = 0, d = 0, x1 = 0, x2 = 0;
 
 	std::cout << "Решение полного квадратного уравнения\n\n";
@@ -981,4 +1085,28 @@ void MySwap(int num, int num1)
 	MySwap(&one, &two);
 	std::cout << one << " " << two << "\n";*/
 
+/*	const int size = 5;
+	int arr[size]{ 3, 1, 2, 5, 6 };
 
+	Fillarray(size);
+
+	std::cout << arr << "\n";
+	std::cout << *arr << "\n";
+	std::cout << arr + 1 << "\n";
+	std::cout << *(arr + 1) << "\n";\
+
+	std::cout << arr + 5 << "\n";
+	*(arr + 5) = 100;
+	std::cout << *(arr + 5) << "\n";*/
+
+/*int a = 5;
+	
+	int* car = new int;
+
+	int *farit = Lol();
+	delete farit;
+	delete car;
+	farit = nullptr;
+	car = nullptr;
+
+	car = &a;*/
