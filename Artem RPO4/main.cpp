@@ -1,9 +1,10 @@
+#define NOMINMAX
 #include <iostream>
 #include <Windows.h>
+#include <string>
+#include <limits>
 
-
-
-void SetMemory(int*& pahom, int size)
+/*void SetMemory(int*& pahom, int size)
 {
 	if (pahom != nullptr)
 	{
@@ -19,7 +20,7 @@ void DeleteArray(int*& pahom)
 	}
 	delete[] pahom;
 	pahom = nullptr;
-}
+}*/
 
 int main()
 {
@@ -27,117 +28,119 @@ int main()
 	SetConsoleOutputCP(CP_UTF8); //1251
 	srand(time(NULL));
 
-	/*	int* arr = nullptr;
+	//отладка
 
-	arr = new int[5];
-	//*(arr + 1) = 10;
+	/*	std::string name = "Text";
+	std::string one = "Иван";
+	std::string* ptr = nullptr;
+	ptr = new std::string[10];
+	delete[] ptr;
 
-	arr[0] = 10;
+	std::string arr[5]{ "Text", "Ivan", "Garlic", "Apple", "Bio Ware Rip" };
 
-	delete[] arr;
+	auto it = std::find(arr->begin() + 1, arr->end(), "Apple");
 
-	arr = nullptr;*/
+	//name.erase(2);
 
-	/*int row = 3, col = 4;
-
-
-	int** name = new int* [row];
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i < name.size(); i++)
 	{
-		delete[] name[i];
+		if (name[i] == 'T')
+		{
+			name[i] = 't';
+		}
+		std::cout << name[i];
+	}*/
+
+	/*	//std::cout << "Введите текст: ";
+	// откуда_взять_текст, куда_его_присвоить
+	std::getline(std::cin, one);
+	std::cout << one << "\n";
+
+	std::getline(std::cin, one, '\n'); //pahom@mail.ru
+	std::cout << one << "\n";
+	//std::cin >> num;
+	//std::cout << num << "\n";
+
+	//std::cin.ignore(32767, '\n'); // норм вариант
+
+	// top вариант
+	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	std::getline(std::cin, one);
+	std::cout << one << "\n";*/
+
+	std::string log, pas, pascheck, logcheck;
+
+	while (true)
+	{
+		std::cout << "\n\n\t\tАвторизация\t\t\n\n";
+		std::cout << "Введите новый логин(от 5 до 15 символов): ";
+		std::getline(std::cin, log);
+		std::cout << "Введите новый пароль(от 5 до 15 символов): ";
+		std::getline(std::cin, pas);
+		if ((log.size() > 4 && log.size() < 16) && (pas.size() > 4 && log.size() < 16))
+		{
+			std::cout << "Регистрация пройдена успешно!";
+			system("cls");
+			std::cout << "\n\n\t\tВойдите в учетную запись\t\t\n\n";
+			while(true)
+			{
+				std::cout << "Введите логин(от 5 до 15 символов): ";
+				std::getline(std::cin, logcheck);
+				std::cout << "Введите пароль(от 5 до 15 символов): ";
+				std::getline(std::cin, pascheck);
+				if (log == logcheck && pas == pascheck)
+				{
+					std::cout << "Ура победа ";
+				}
+				else
+				{
+					std::cout << "Некоректный ввод\n";
+					std::cout << "Попробуйте снова\n";
+					Sleep(1500);
+				}
+			}
+				
+		}
+		else
+		{
+			std::cout << "Некоректный ввод\n";
+			std::cout << "Попробуйте снова\n";
+			Sleep(1500);
+		}
+		Sleep(500);
+		system("cls");
 	}
-	delete[] name;
-	name = nullptr;
 	
-	name[1][2] = 100;
-	*/
-	
-	/*int side = 2, row = 4, col1 = 4, col2 = 3;
 
-	int*** seva = new int**[side];
-
-	for (int i = 0; i < side; i++)
+/*
+	if (log,pas != num1,num2)
 	{
-		seva[i] = new int* [row];
+		system("cls");
+		std::cout << "\n\n\t\tВойдите в учетную запись\t\t\n\n";
+		std::cout << "Введите логин: ";
+		std::getline(std::cin, log);
 	}
-
-	for (int i = 0; i < row; i++)
+	else if (pas != num2)
 	{
-		seva[0][i] = new int[col1];
+		std::cout << "Введите новый пароль: ";
+		std::getline(std::cin, pas);
 	}
-
-	seva[1][0] = new int[2];
-	for (int i = 1; i < row; i++)
+	else if (true)
 	{
-		seva[1][i] = new int[col2];
+		std::cout << "Вы вошли в учетную запись";
+		Sleep(1000);
 	}
-	*/
-
-	/*void PushArray(int *&arr, int &size)
-{
-	int* temp = new int[size];
-	
-	for (int i = 0; i < size; i++)
+	else
 	{
-		temp[i] = arr[i];
-	}
+		std::cout << "Неправильно введен пароль или логин!";
+		Sleep(1500);
+	}*/
 
-	delete[] arr;
 
-	size++;
-	arr = new int[size];
 
-	for (int i = 0; i < size - 1; i++)
-	{
-		arr[i] = temp[i];
-	}
-	delete[] temp;
-
-	arr[size - 1] = 100;
-}
-
-void PushArray2(int*& arr, int& size)
-{
-	size++;
-
-	int* temp = new int[size];
-
-	for (int i = 0; i < size - 1; i++)
-	{
-		temp[i] = arr[i];
-	}
-
-	arr[size - 1] = 100;
-
-	std::swap(arr, temp);
-
-	delete[] temp;
 
 	
-}
-	
-	int size = 5;
-
-	int* arr = new int[size] {5, 3, 8, 1, 9};
-	
-	for (int i = 0; i < size; i++)
-	{
-		std::cout << arr[i] << " ";
-	}
-	std::cout << "\n\n";
-
-	PushArray(arr, size);
-
-	for (int i = 0; i < size; i++)
-	{
-		std::cout << arr[i] << " ";
-	}
-
-
-	delete[]arr*/;
-
-
-
 
 
 
@@ -1110,3 +1113,113 @@ void MySwap(int num, int num1)
 	car = nullptr;
 
 	car = &a;*/
+
+	/*	int* arr = nullptr;
+
+	arr = new int[5];
+	//*(arr + 1) = 10;
+
+	arr[0] = 10;
+
+	delete[] arr;
+
+	arr = nullptr;*/
+
+/*int row = 3, col = 4;
+
+
+	int** name = new int* [row];
+	for (int i = 0; i < row; i++)
+	{
+		delete[] name[i];
+	}
+	delete[] name;
+	name = nullptr;
+	
+	name[1][2] = 100;
+	*/
+	
+/*int side = 2, row = 4, col1 = 4, col2 = 3;
+
+	int*** seva = new int**[side];
+
+	for (int i = 0; i < side; i++)
+	{
+		seva[i] = new int* [row];
+	}
+
+	for (int i = 0; i < row; i++)
+	{
+		seva[0][i] = new int[col1];
+	}
+
+	seva[1][0] = new int[2];
+	for (int i = 1; i < row; i++)
+	{
+		seva[1][i] = new int[col2];
+	}
+	*/
+
+/*void PushArray(int *&arr, int &size)
+{
+	int* temp = new int[size];
+	
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+
+	delete[] arr;
+
+	size++;
+	arr = new int[size];
+
+	for (int i = 0; i < size - 1; i++)
+	{
+		arr[i] = temp[i];
+	}
+	delete[] temp;
+
+	arr[size - 1] = 100;
+}
+
+void PushArray2(int*& arr, int& size)
+{
+	size++;
+
+	int* temp = new int[size];
+
+	for (int i = 0; i < size - 1; i++)
+	{
+		temp[i] = arr[i];
+	}
+
+	arr[size - 1] = 100;
+
+	std::swap(arr, temp);
+
+	delete[] temp;
+
+	
+}
+	
+	int size = 5;
+
+	int* arr = new int[size] {5, 3, 8, 1, 9};
+	
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n\n";
+
+	PushArray(arr, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+
+
+	delete[]arr;*/
+
