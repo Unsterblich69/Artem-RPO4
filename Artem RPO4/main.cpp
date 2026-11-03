@@ -1,8 +1,13 @@
 #define NOMINMAX
+
+#include "Text.hpp"
 #include <iostream>
 #include <Windows.h>
 #include <string>
 #include <limits>
+
+#include <io.h>			//_setmode, _fileno
+#include <fcntl.h>		//_O_U16TEXT
 
 /*void SetMemory(int*& pahom, int size)
 {
@@ -24,132 +29,84 @@ void DeleteArray(int*& pahom)
 
 int main()
 {
-	SetConsoleCP(CP_UTF8);
+/*	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8); //1251
-	srand(time(NULL));
+	srand(time(NULL));*/
 
-	//отладка
-
-	/*	std::string name = "Text";
-	std::string one = "Иван";
-	std::string* ptr = nullptr;
-	ptr = new std::string[10];
-	delete[] ptr;
-
-	std::string arr[5]{ "Text", "Ivan", "Garlic", "Apple", "Bio Ware Rip" };
-
-	auto it = std::find(arr->begin() + 1, arr->end(), "Apple");
-
-	//name.erase(2);
-
-	for (int i = 0; i < name.size(); i++)
-	{
-		if (name[i] == 'T')
-		{
-			name[i] = 't';
-		}
-		std::cout << name[i];
-	}*/
-
-	/*	//std::cout << "Введите текст: ";
-	// откуда_взять_текст, куда_его_присвоить
-	std::getline(std::cin, one);
-	std::cout << one << "\n";
-
-	std::getline(std::cin, one, '\n'); //pahom@mail.ru
-	std::cout << one << "\n";
-	//std::cin >> num;
-	//std::cout << num << "\n";
-
-	//std::cin.ignore(32767, '\n'); // норм вариант
-
-	// top вариант
-	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-	std::getline(std::cin, one);
-	std::cout << one << "\n";*/
-
-	std::string log, pas, pascheck, logcheck;
-
-	while (true)
-	{
-		std::cout << "\n\n\t\tАвторизация\t\t\n\n";
-		std::cout << "Введите новый логин(от 5 до 15 символов): ";
-		std::getline(std::cin, log);
-		std::cout << "Введите новый пароль(от 5 до 15 символов): ";
-		std::getline(std::cin, pas);
-		if ((log.size() > 4 && log.size() < 16) && (pas.size() > 4 && log.size() < 16))
-		{
-			std::cout << "Регистрация пройдена успешно!";
-			system("cls");
-			std::cout << "\n\n\t\tВойдите в учетную запись\t\t\n\n";
-			while(true)
-			{
-				std::cout << "Введите логин(от 5 до 15 символов): ";
-				std::getline(std::cin, logcheck);
-				std::cout << "Введите пароль(от 5 до 15 символов): ";
-				std::getline(std::cin, pascheck);
-				if (log == logcheck && pas == pascheck)
-				{
-					std::cout << "Ура победа ";
-				}
-				else
-				{
-					std::cout << "Некоректный ввод\n";
-					std::cout << "Попробуйте снова\n";
-					Sleep(1500);
-				}
-			}
-				
-		}
-		else
-		{
-			std::cout << "Некоректный ввод\n";
-			std::cout << "Попробуйте снова\n";
-			Sleep(1500);
-		}
-		Sleep(500);
-		system("cls");
-	}
-	
-
-/*
-	if (log,pas != num1,num2)
-	{
-		system("cls");
-		std::cout << "\n\n\t\tВойдите в учетную запись\t\t\n\n";
-		std::cout << "Введите логин: ";
-		std::getline(std::cin, log);
-	}
-	else if (pas != num2)
-	{
-		std::cout << "Введите новый пароль: ";
-		std::getline(std::cin, pas);
-	}
-	else if (true)
-	{
-		std::cout << "Вы вошли в учетную запись";
-		Sleep(1000);
-	}
-	else
-	{
-		std::cout << "Неправильно введен пароль или логин!";
-		Sleep(1500);
-	}*/
-
-
+	_setmode(_fileno(stdin), _O_U16TEXT);
+	_setmode(_fileno(stdout), _O_U16TEXT);
 
 
 	
+	/*
+		std::string				std::wstring
+		char					wchar_t
+		std::cout				std::wcout
+		std::cin				std::wcin
+		std::getline			std::getline
+		std::endl				std::endl
+
+		"Text"					L"Text"
+		'h'						L'h'
+	*/
+
+	/*std::wstring one, two;
+
+	std::wcout << L"Введите текст 1: ";
+	std::getline(std::wcin, one, L'\n');
+	std::wcout << L"Введите текст 2: ";
+	std::getline(std::wcin, two, L'\n');
+
+	std::wcout << one << L"\n" << two << L"\n\n";*/
+
+	/*	std::wstring name = L"Hello world\n";
+	std::wcout << name;
+	
+
+	//найти позицию какого то слова внутри строки
+
+	size_t position = name.find(L"world");
+	std::wcout << position << L"\n\n";
+	if (position != std::wstring::npos)
+	{
+		std::wcout << L"Слово найдено!\n\n";
+	}
+	
+	// возврат какого то участка строки
+	std::wcout << name.substr(4, 5) << L"\n" << name << L"\n\n";
+
+	//вырезать
+	name.erase(2, 5);
+	std::wcout << name << L"\n\n";
+
+	//вставка
+	name.insert(2, L" Пахом ");
+	std::wcout << name << L"\n\n";
+
+	//замена
+	name = L"Всем привет. Я устал\n";
+	name.replace(5, 6, L"Пока");
+	//с какого индекса начать, сколько символы выразать, какой текст вставить
+	std::wcout << name << L"\n\n";
+
+
+	name.clear();
+	if (name.empty())
+	{
+		std::wcout << L"Строка пустая\n\n";
+	}
+	*/
 
 
 
 	return 0;
 }
 
-//тип_данных имя_переменной;
 
-/*double a = 0;
+/*
+	//тип_данных имя_переменной;
+
+	double a = 0;
 	double b = 0;
 	char c = 0;
 	std::cout << "\t\tКалькулятор\n";
@@ -1114,7 +1071,7 @@ void MySwap(int num, int num1)
 
 	car = &a;*/
 
-	/*	int* arr = nullptr;
+/*	int* arr = nullptr;
 
 	arr = new int[5];
 	//*(arr + 1) = 10;
@@ -1222,4 +1179,116 @@ void PushArray2(int*& arr, int& size)
 
 
 	delete[]arr;*/
+
+/*
+	//отладка
+	
+	std::string name = "Text";
+	std::string one = "Иван";
+	std::string* ptr = nullptr;
+	ptr = new std::string[10];
+	delete[] ptr;
+
+	std::string arr[5]{ "Text", "Ivan", "Garlic", "Apple", "Bio Ware Rip" };
+
+	auto it = std::find(arr->begin() + 1, arr->end(), "Apple");
+
+	//name.erase(2);
+
+	for (int i = 0; i < name.size(); i++)
+	{
+		if (name[i] == 'T')
+		{
+			name[i] = 't';
+		}
+		std::cout << name[i];
+	}*/
+
+/*	//std::cout << "Введите текст: ";
+	// откуда_взять_текст, куда_его_присвоить
+	std::getline(std::cin, one);
+	std::cout << one << "\n";
+
+	std::getline(std::cin, one, '\n'); //pahom@mail.ru
+	std::cout << one << "\n";
+	//std::cin >> num;
+	//std::cout << num << "\n";
+
+	//std::cin.ignore(32767, '\n'); // норм вариант
+
+	// top вариант
+	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	std::getline(std::cin, one);
+	std::cout << one << "\n";*/
+
+/*std::string log, pas, pascheck, logcheck;
+
+	while (true)
+	{
+		std::cout << "\n\n\t\tАвторизация\t\t\n\n";
+		std::cout << "Введите новый логин(от 5 до 15 символов): ";
+		std::getline(std::cin, log);
+		std::cout << "Введите новый пароль(от 5 до 15 символов): ";
+		std::getline(std::cin, pas);
+		if ((log.size() > 4 && log.size() < 16) && (pas.size() > 4 && log.size() < 16))
+		{
+			std::cout << "Регистрация пройдена успешно!";
+			system("cls");
+			std::cout << "\n\n\t\tВойдите в учетную запись\t\t\n\n";
+			while(true)
+			{
+				std::cout << "Введите логин(от 5 до 15 символов): ";
+				std::getline(std::cin, logcheck);
+				std::cout << "Введите пароль(от 5 до 15 символов): ";
+				std::getline(std::cin, pascheck);
+				if (log == logcheck && pas == pascheck)
+				{
+					std::cout << "Ура победа ";
+				}
+				else
+				{
+					std::cout << "Некоректный ввод\n";
+					std::cout << "Попробуйте снова\n";
+					Sleep(1500);
+				}
+			}
+				
+		}
+		else
+		{
+			std::cout << "Некоректный ввод\n";
+			std::cout << "Попробуйте снова\n";
+			Sleep(1500);
+		}
+		Sleep(500);
+		system("cls");
+	}*/
+	
+/*
+	if (log,pas != num1,num2)
+	{
+		system("cls");
+		std::cout << "\n\n\t\tВойдите в учетную запись\t\t\n\n";
+		std::cout << "Введите логин: ";
+		std::getline(std::cin, log);
+	}
+	else if (pas != num2)
+	{
+		std::cout << "Введите новый пароль: ";
+		std::getline(std::cin, pas);
+	}
+	else if (true)
+	{
+		std::cout << "Вы вошли в учетную запись";
+		Sleep(1000);
+	}
+	else
+	{
+		std::cout << "Неправильно введен пароль или логин!";
+		Sleep(1500);
+	}*/
+
+
+
 
